@@ -18,6 +18,8 @@ public class BstTest {
         System.out.println("ROOT ele "+bst.root);
         System.out.println("Height "+bst.height());
         bst.printDirectoryStructuredTree();
+        bst.swapTree();
+        bst.printDirectoryStructuredTree();
     }
 
 }

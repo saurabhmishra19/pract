@@ -34,7 +34,19 @@ public class BSTImpl {
         }
     }
     public void swapTree(){
-        swapTree(root);
+        swapTree(null, root);
+    }
+
+    private TreeNode swapTree(TreeNode parent, TreeNode node){
+        if(null!=node){
+            swapTree(node, node.left);
+            TreeNode tmp=parent.left;
+            parent.left=parent.right;
+            parent.right=tmp;
+
+            swapTree(node,node.right);
+        }
+        return null;
     }
 
     public int height(){
@@ -54,9 +66,7 @@ public class BSTImpl {
             return 0;
     }
 
-    private TreeNode swapTree(TreeNode node){
-        return null;
-    }
+
 
     public void printDirectoryStructuredTree(){
         int height=height();
