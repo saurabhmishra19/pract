@@ -67,6 +67,45 @@ public class BSTImpl {
     }
 
 
+    public void DFS(){
+        int height=height();
+        height=height-2;
+        for(;height>=0;height--) {
+            DFS(root, height , height );
+        }
+    }
+
+    private boolean isLeaf(TreeNode node){
+        return null==node.left && null==node.right;
+    }
+    private void DFS(TreeNode node, int height, int currHeight){
+        if(null !=node) {
+
+
+           if(currHeight!=0) {
+               currHeight = currHeight - 1;
+               DFS(node.left, height, currHeight);
+               DFS(node.right, height, currHeight);
+           }
+
+            else if (currHeight == 0) {
+               if(!isLeaf(node)){
+                   swapNode(node);
+               }
+                System.out.println("DFS" + node.val);
+            }
+        }
+
+    }
+
+    private void swapNode(TreeNode node){
+        TreeNode tmp=node.left;
+        node.left=node.right;
+        node.right=tmp;
+
+    }
+
+
 
     public void printDirectoryStructuredTree(){
         int height=height();
