@@ -1,5 +1,7 @@
 package bst;
 
+import sun.reflect.generics.tree.Tree;
+
 public class BSTImpl {
 
     public TreeNode root;
@@ -31,8 +33,45 @@ public class BSTImpl {
             inorderTrav(node.right);
         }
     }
+    public void swapTree(){
+        swapTree(root);
+    }
 
+    public int height(){
 
+        return height(root);
+    }
+    private int height(TreeNode node){
+        if(null !=node){
 
+            int lHigh=height(node.left);
+            int rHigh=height(node.right);
+            if(lHigh>rHigh)
+                return lHigh+1;
+            else
+                return rHigh+1;
+        }else
+            return 0;
+    }
 
+    private TreeNode swapTree(TreeNode node){
+        return null;
+    }
+
+    public void printDirectoryStructuredTree(){
+        int height=height();
+        printDirectoryStructuredTree(root, height, height, 'C');
+    }
+    public void printDirectoryStructuredTree(TreeNode node, int height, int curr, char s){
+        if(node !=null) {
+            for (int k = height - curr; k > 0; k--) {
+                System.out.print(" ");
+            }
+            curr=curr-1;
+            System.out.print(s+"-"+node.val);
+            System.out.println("");
+            printDirectoryStructuredTree(node.left,height,curr, 'L');
+            printDirectoryStructuredTree(node.right,height,curr,'R');
+        }
+    }
 }

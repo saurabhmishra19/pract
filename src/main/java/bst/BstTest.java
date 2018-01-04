@@ -16,8 +16,8 @@ public class BstTest {
         bst.inorderTravesal();
 
         System.out.println("ROOT ele "+bst.root);
-
-
+        System.out.println("Height "+bst.height());
+        bst.printDirectoryStructuredTree();
     }
 
 }
