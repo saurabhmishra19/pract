@@ -1,7 +1,7 @@
 package bst;
 
-import sun.reflect.generics.tree.Tree;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class BSTImpl {
@@ -18,8 +18,7 @@ public class BSTImpl {
         if (node == null) {
             count++;
             node = new TreeNode(data);
-        }
-        else if (data < node.val) {
+        } else if (data < node.val) {
             node.left = add(data, node.left);
         } else {
             node.right = add(data, node.right);
@@ -131,28 +130,142 @@ public class BSTImpl {
     }
 
 
-    public void twoRandomNodeSwapper(TreeNode node){
-        Random rm=new Random();
-        int firstNode=rm.nextInt(count);
-        int secandNode=rm.nextInt(count);
+    public void twoRandomNodeSwapper(TreeNode node) {
+        Random rm = new Random();
+        int firstNode = rm.nextInt(count);
+        int secandNode = rm.nextInt(count);
 
     }
 
-    public TreeNode findNthNodeInorder(int n){
+    public TreeNode findNthNodeInorder(int n) {
 
-      return  findNthNodeInorder(root, n,1);
+        return findNthNodeInorder(root, n, 1);
     }
 
 
-    private TreeNode findNthNodeInorder(TreeNode node, int n, int curr){
-        TreeNode currN=null;
-        if(n==curr){
-            currN= node;
-        }else{
-            currN=findNthNodeInorder(node.left, n, curr+1);
-            currN=findNthNodeInorder(node.right, n, curr+1);
+    private TreeNode findNthNodeInorder(TreeNode node, int n, int curr) {
+        TreeNode currN = null;
+        if (n == curr) {
+            currN = node;
+        } else {
+            currN = findNthNodeInorder(node.left, n, curr + 1);
+            currN = findNthNodeInorder(node.right, n, curr + 1);
         }
         return currN;
     }
+
+    public void prepareBadTree(){
+        prepareBadTree(root);
+    }
+    private void prepareBadTree(TreeNode node) {
+
+        if (node != null) {
+            if (node.val == 7)
+                node.val = 9;
+            else if (node.val == 9)
+                node.val = 7;
+
+            prepareBadTree(node.left);
+            prepareBadTree(node.right);
+
+        }
+
+
+    }
+
+    public void fixTree(TreeNode node){
+
+
+
+
+    }
+
+
+    public TreeNode findIncorrectNode(TreeNode node, TreeNode wrongF ){
+
+        if(node!=null
+                //&& wrongF==null
+                ){
+
+            if(null!= node.left){
+                if(node.val<node.left.val){
+                    wrongF= node;
+                }
+            }
+            if(null!=node.right){
+                if(node.val>node.right.val){
+                    wrongF= node;
+                }
+            }
+            wrongF= findIncorrectNode(node.left, wrongF);
+            wrongF= findIncorrectNode(node.right, wrongF);
+
+        }
+        return wrongF;
+
+    }
+
+
+    public List<TreeNode> inorderList(TreeNode root){
+        List values=new ArrayList<TreeNode>();
+
+        inorderList(root,values);
+
+     return values;
+    }
+
+    private void inorderList(TreeNode node,List values) {
+
+    if(node!=null){
+
+        inorderList(node.left, values);
+        values.add(node);
+        inorderList(node.right,values);
+
+    }
+
+    }
+
+    public List<TreeNode> replaceIncorrectSwaps(List<TreeNode> values){
+        boolean incorrect=false;
+        TreeNode incorrectNode=null;
+        TreeNode replaceNode=null;
+        for(int i=0;i< values.size();i++){
+            for(int j=i+1;j<values.size() && !incorrect;j++){
+                if(!incorrect && values.get(i).val>values.get(j).val)
+                {
+                    incorrect=true;
+                    incorrectNode=values.get(i);
+                }
+
+
+
+            }
+
+            if(incorrect){
+                if(values.get(i).val<incorrectNode.val){
+                    replaceNode=values.get(i);
+
+                }
+
+            }
+        }
+
+        if(incorrect){
+            int tmp=incorrectNode.val;
+            incorrectNode.val=replaceNode.val;
+            replaceNode.val=tmp;
+        }
+
+
+        return values;
+    }
+
+
+
+
+
+
+
 
 }
