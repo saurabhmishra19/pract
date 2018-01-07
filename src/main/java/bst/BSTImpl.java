@@ -263,6 +263,54 @@ public class BSTImpl {
 
 
 
+    public int maxPathSum(TreeNode root){
+
+        return maxSum(root);
+    }
+
+    private int maxSum(TreeNode node ){
+        int leftSum=0;
+        int rightSum=0;
+        if(null !=node){
+            leftSum=node.val+maxSum(node.left);
+            rightSum=node.val+maxSum(node.right);
+            return leftSum>rightSum?leftSum:rightSum;
+        }
+        return 0;
+
+    }
+
+
+
+    private int maxSumLeetStyle(TreeNode node, int maxValueTill ){
+        int leftSum=0;
+        int rightSum=0;
+        if(null !=node){
+
+            leftSum=maxSumLeetStyle(node.left,maxValueTill);
+            rightSum=maxSumLeetStyle(node.right, maxValueTill);
+
+
+
+            if(maxValueTill+leftSum>maxValueTill)
+                maxValueTill=maxValueTill+leftSum;
+            if(maxValueTill+rightSum>maxValueTill)
+                maxValueTill+=rightSum;
+            if(maxValueTill+node.val>maxValueTill)
+                maxValueTill+=node.val;
+            return maxValueTill;
+        }
+        return 0;
+
+    }
+
+
+
+
+
+
+
+
 
 
 

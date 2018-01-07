@@ -16,11 +16,12 @@ public class BstTest {
         bst.add(7);
         bst.add(6);
         bst.add(9);
+        bst.printDirectoryStructuredTree();
        // bst.inorderTravesal();
 
        // System.out.println("ROOT ele "+bst.root);
         //System.out.println("Height "+bst.height());
-        System.out.println("Before swap");
+  /*      System.out.println("Before swap");
         bst.printDirectoryStructuredTree();
      //   bst.swapTree();
       //  bst.DFS();
@@ -43,9 +44,10 @@ public class BstTest {
         val.add(new TreeNode(2));
         val.add(new TreeNode(1));
 
-      System.out.println(bst.replaceIncorrectSwaps(val));
+      System.out.println(bst.replaceIncorrectSwaps(val));*/
 
 
+        System.out.println(bst.maxPathSum(bst.root));
 
 
     }
