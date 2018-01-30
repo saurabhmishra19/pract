@@ -1,0 +1,27 @@
+[Variable{processId='prd15'},
+ Variable{processId='prd50'},
+ Variable{processId='prd74'}]
+
+
+{prd74=Process{processId='prd74', bk='BK92'},
+prd15=Process{processId='prd15', bk='BK87'},
+prd50=Process{processId='prd50', bk='BK76'},
+prd13=Process{processId='prd13', bk='BK35'},
+prd80=Process{processId='prd80', bk='BK24'}}
+
+appl [Application{bk='BK87', status=0, appId='app33'}
+	  , Application{bk='BK8', status=0, appId='app12'},
+	  Application{bk='BK35', status=0, appId='app35'},
+	  Application{bk='BK72', status=0, appId='app41'},
+	  Application{bk='BK76', status=0, appId='app87'},
+	  Application{bk='BK16', status=0, appId='app26'},
+	  Application{bk='BK24', status=0, appId='app84'}]
+
+results [
+	Application{bk='BK87', status=90, appId='app33'},
+	Application{bk='BK8', status=0, appId='app12'},
+	Application{bk='BK35', status=0, appId='app35'},
+	Application{bk='BK72', status=0, appId='app41'},
+	Application{bk='BK76', status=90, appId='app87'},
+	Application{bk='BK16', status=0, appId='app26'},
+	Application{bk='BK24', status=0, appId='app84'}]
